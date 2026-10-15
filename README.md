@@ -1,155 +1,132 @@
-# 🔄 Skill-Swap
-### A Peer-to-Peer Skill Exchange Platform for Students
+# Skill-Swap
 
-Skill-Swap is a Flutter-based mobile application designed to connect students who want to exchange knowledge and learn new skills from one another. The platform allows students to share the skills they can teach, discover skills they want to learn, and connect with peers for mutual learning — without monetary exchange.
+> *Teach what you know. Learn what you want.*
 
-Developed as a project for the **Mobile Application Development** course.
+Skill-Swap is a Flutter mobile app that helps students trade skills with each other. A student lists what they can teach and what they want to learn, and the app shows other students who are a good match. No money, just knowledge for knowledge.
 
-## 🎯 Project Objectives
-
-- Enable students to create profiles and list skills they can teach and want to learn.
-- Provide searchable skill listings with category-based filtering.
-- Identify mutual skill matches between students.
-- Allow students to send, accept, and decline skill-exchange requests.
-- Support basic scheduling of skill-swap sessions.
-- Build trust through post-session ratings and reviews.
-
-## ✨ Core Features
-
-| Feature | Description |
-|---|---|
-| 🔐 Authentication | Student registration and login using Firebase Authentication. |
-| 👤 Student Profiles | Manage student information, department/year, and skill preferences. |
-| 🧑‍🏫 Skill Management | List skills to teach and skills to learn. |
-| 🔎 Browse & Search | Discover skills using search and category filters. |
-| 🤝 Matching Engine | Find students with complementary skill-exchange interests. |
-| 📩 Swap Requests | Send, accept, or decline exchange requests. |
-| 📅 Scheduling | Arrange dates and times for skill-swap sessions. |
-| ⭐ Ratings & Reviews | Rate completed exchanges and optionally provide feedback. |
-
-*Note: These features describe the proposed functionality. Update this section as features are implemented.*
-
-## 🛠️ Technology Stack
-
-- **Frontend:** Flutter
-- **Programming Language:** Dart
-- **Authentication:** Firebase Authentication
-- **Database:** Cloud Firestore
-- **State Management:** Provider or Riverpod
-- **Development Environment:** Visual Studio Code
-- **Version Control:** Git and GitHub
-
-### Future Technologies
-
-- Firebase Cloud Messaging for push notifications.
-- Firestore streams for real-time messaging.
-- `fl_chart` for optional activity statistics.
-
-## ⚙️ Getting Started
-
-### Prerequisites
-
-Make sure you have installed:
-
-- Flutter SDK
-- Dart SDK (included with Flutter)
-- Visual Studio Code or Android Studio
-- An Android emulator or a compatible physical device
-- A Firebase project configured for the application
-
-### Installation
-
-**1. Clone the repository**
-
-```bash
-git clone https://github.com/YOUR-USERNAME/Skill-Swap.git
-```
-
-**2. Navigate to the project directory**
-
-```bash
-cd Skill-Swap
-```
-
-**3. Install dependencies**
-
-```bash
-flutter pub get
-```
-
-**4. Configure Firebase**
-
-Configure your Firebase project for the Flutter application. Follow the [official FlutterFire documentation](https://firebase.google.com/docs/flutter/setup) to connect Firebase Authentication and Cloud Firestore.
-
-**5. Run the application**
-
-```bash
-flutter run
-```
-
-## 🧠 Matching Logic
-
-Skill-Swap aims to identify mutually beneficial learning opportunities between students.
-
-For example:
-
-- Student A can teach **Flutter** and wants to learn **UI/UX Design**.
-- Student B can teach **UI/UX Design** and wants to learn **Flutter**.
-
-The application can identify these complementary interests as a mutual skill match, allowing both students to exchange knowledge.
-
-## 👥 Project Team
-
-This project is developed collaboratively by the following students:
-
-| Team Member | Student ID |
-|---|---|
-| Muhammad Yahya Khokhar | SP24-BCS-201 |
-| Sohail Ahmad | SP24-BCS-191 |
-| Tauseeq Khan | FA23-BCS-075 |
-| Syed Daud Shah | SP24-BCS-208 |
-
-## 🗺️ Development Roadmap
-
-- [ ] **Weeks 1–2:** Requirements, wireframes, Firebase setup, and authentication.
-- [ ] **Weeks 3–4:** Student profiles and skill management.
-- [ ] **Weeks 5–6:** Skill browsing, search, and matching engine.
-- [ ] **Weeks 7–8:** Swap requests and scheduling.
-- [ ] **Week 9:** Ratings, reviews, and UI improvements.
-- [ ] **Week 10:** Testing, bug fixes, and documentation.
-
-## 🚀 Future Enhancements
-
-- Real-time in-app messaging between matched students.
-- Push notifications for new matches and requests.
-- Skill verification badges and peer endorsements.
-- Group skill-exchange sessions and workshops.
-
-## 🎓 Course Information
-
-**Course:** Mobile Application Development  
-**Project:** Skill-Swap — A Peer-to-Peer Skill Exchange Platform for Students  
-**Platform:** Flutter (Dart)  
-**Backend:** Firebase Authentication and Cloud Firestore
-
-## 🤝 Contributions
-
-Contributions from the project team are welcome.
-
-1. Discuss the proposed change with the team.
-2. Create a branch for your work.
-3. Implement and test your changes.
-4. Commit and push your changes.
-5. Open a pull request if working through a fork or a branch-based review process.
-
-Please coordinate changes to shared files to avoid merge conflicts.
-
-## 📄 Project Status
-
-**Status:** Under Development
-
-This project is being developed as part of the Mobile Application Development course. Features and implementation details may evolve throughout development.
+**Course:** CSC303 Mobile Application Development
+**Current stage:** Assignment 2, static UI (tag `A2`)
 
 ---
 
-⭐ **Skill-Swap — Share Your Skills. Learn Together. Grow Together.**
+## Team
+
+| Name | Roll No. |
+|---|---|
+| Muhammad Yahya Khokhar | SP24-BCS-201 |
+| Sohail Ahmad | SP24-BCS-191 |
+| Tauseeq Khan | SP23-BCS-075 |
+| Syed Daud Shah | SP24-BCS-208 |
+
+---
+
+## Problem
+
+Students have skills their classmates want to learn (coding, design, languages, music, tutoring), but there is no simple way to find who has what. WhatsApp groups get buried, word of mouth only reaches your own circle, and paid tutoring is not built for free, mutual exchange. Skill-Swap gives students one place to list, search and match skills.
+
+---
+
+## What is in Assignment 2
+
+This stage is the **look of the app only**. All data is dummy data and there is no navigation, database or API yet.
+
+### Screens
+
+| Screen | Purpose |
+|---|---|
+| Splash | Logo, app name and tagline |
+| Login | Email and password fields with a Login button (look only) |
+| Home | Banner and a list of suggested student matches |
+| Student Detail | One student's profile: skills they teach and want, rating, action buttons |
+| Add Skill (Profile Setup) | Form to enter name, department, skill to teach, skill to learn |
+
+### Main entity: `Student`
+
+| Field | Example |
+|---|---|
+| name | Ayesha Khan |
+| department | BS Computer Science, Year 2 |
+| teaches | Flutter |
+| wants | Graphic Design |
+| rating | 4.8 |
+| image | assets/images/student1.png |
+
+### Reusable widget
+
+`StudentCard` takes a `Student` and shows an avatar, name, department, skills and rating. It is used 4 times on the Home screen with different dummy data.
+
+---
+
+## Project structure
+
+```
+lib/
+├── main.dart                      # starts the app, sets the theme
+├── models/
+│   └── student.dart               # Student class (the main entity)
+├── widgets/
+│   └── student_card.dart          # reusable card for one student
+└── screens/
+    ├── splash_screen.dart
+    ├── login_screen.dart
+    ├── home_screen.dart
+    ├── student_detail_screen.dart
+    └── add_skill_screen.dart
+assets/
+└── images/                        # logo, banner, 4 student avatars
+```
+
+Every screen is its own `StatelessWidget`. To see a different screen, change the `home:` line in `lib/main.dart`.
+
+---
+
+## How to run
+
+You need [Flutter](https://docs.flutter.dev/get-started/install) installed.
+
+```bash
+git clone <repo-url>
+cd Skill-Swap
+flutter pub get
+flutter run -d chrome
+```
+
+You can also run it on an Android emulator or a connected phone: use `flutter devices` to see the options, then `flutter run -d <device-id>`.
+
+To change the screen shown, open `lib/main.dart` and edit:
+
+```dart
+home: const HomeScreen(),   // try SplashScreen(), LoginScreen(), etc.
+```
+
+---
+
+## Screenshots
+
+| Splash | Login | Home |
+|---|---|---|
+| ![Splash](screenshots/splash.png) | ![Login](screenshots/login.png) | ![Home](screenshots/home.png) |
+
+| Student Detail | Add Skill |
+|---|---|
+| ![Detail](screenshots/detail.png) | ![Add Skill](screenshots/add_skill.png) |
+
+---
+
+## Roadmap
+
+| Assignment | What gets added |
+|---|---|
+| **A2 (this stage)** | Static UI for all main screens |
+| **A3** | Navigation between screens and interactive widgets |
+| **A4** | Saved data (Firebase Authentication and Cloud Firestore) and a device or API feature |
+
+Planned features from the proposal: sign up and login, profile with teach and want lists, search and category filters, mutual matching, swap requests (send, accept, decline), session scheduling, and post-swap ratings.
+
+---
+
+## Built with
+
+- Flutter and Dart
+- Material widgets only at this stage (`Scaffold`, `AppBar`, `Row`, `Column`, `Expanded`, `Card`, `ListTile`, `Image.asset`, `TextField`, `ElevatedButton`)
+- Planned for later: Firebase Authentication, Cloud Firestore, Provider or Riverpod
