@@ -10,19 +10,19 @@ class HomeScreen extends StatelessWidget {
   // Dummy list of 4 students
   static const List<Student> students = [
     Student(
-      name: 'Ali Raza',
-      department: 'BCS - 4th Semester',
+      name: 'Sohail Ahmad',
+      department: 'BCS - 6th Semester',
       teaches: 'Flutter',
       wants: 'Graphic Design',
       rating: 4.8,
       image: 'assets/images/student1.png',
     ),
     Student(
-      name: 'Sara Khan',
-      department: 'BBA - 6th Semester',
-      teaches: 'Graphic Design',
-      wants: 'Python',
-      rating: 4.5,
+      name: 'Muhammad Yahya Khokhar',
+      department: 'BCS - 6th Semester',
+      teaches: 'ML/AI Developer',
+      wants: 'Devops',
+      rating: 4.8,
       image: 'assets/images/student2.png',
     ),
     Student(
@@ -56,9 +56,7 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         // Gradient AppBar
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: AppColors.appBarGradient,
-          ),
+          decoration: const BoxDecoration(gradient: AppColors.appBarGradient),
         ),
         actions: [
           IconButton(
@@ -91,9 +89,10 @@ class HomeScreen extends StatelessWidget {
                 child: Image.asset(
                   'assets/images/banner.png',
                   width: double.infinity,
-                  height: 150,
-                  fit: BoxFit.cover,
-                ),
+                  height: 170,
+                  fit: BoxFit.fill,
+                  // fit: BoxFit.fitWidth,
+                ), 
               ),
             ),
             // Section heading
@@ -109,8 +108,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             // 4 student cards (tap any card to view student profile)
-            for (final student in students)
-              StudentCard(student: student),
+            for (final student in students) StudentCard(student: student),
             const SizedBox(height: 16),
           ],
         ),
