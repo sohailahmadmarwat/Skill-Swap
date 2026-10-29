@@ -1,132 +1,63 @@
-# Skill-Swap
+# SkillSwap
 
-> *Teach what you know. Learn what you want.*
+A semester Flutter project: a student skill-exchange app with a dark neon / glassmorphism UI. Students teach one skill and learn another.
 
-Skill-Swap is a Flutter mobile app that helps students trade skills with each other. A student lists what they can teach and what they want to learn, and the app shows other students who are a good match. No money, just knowledge for knowledge.
+## Screens (13)
 
-**Course:** CSC303 Mobile Application Development
-**Current stage:** Assignment 2, static UI (tag `A2`)
+**Fully functional (5)**
 
----
+| Screen | File | What works |
+|---|---|---|
+| Login / Sign Up | `login_screen.dart` | Tab switch, validation, password show/hide, logs in to `UserSession` |
+| Home | `home_screen.dart` | Time-based greeting for the logged-in user, live search, category filter, favourites, notifications sheet, drawer, bottom nav |
+| Search | `search_screen.dart` | Live search, category pills, popular skill chips, student list |
+| Profile | `student_detail_screen.dart` | Shows the logged-in user, or another student when opened from a card; Send Request; date picker |
+| Edit Profile | `edit_profile_screen.dart` | Pre-filled form, live first-letter avatar, add/remove skills, saves to session |
 
-## Team
-
-| Name | Roll No. |
-|---|---|
-| Muhammad Yahya Khokhar | SP24-BCS-201 |
-| Sohail Ahmad | SP24-BCS-191 |
-| Tauseeq Khan | SP23-BCS-075 |
-| Syed Daud Shah | SP24-BCS-208 |
-
----
-
-## Problem
-
-Students have skills their classmates want to learn (coding, design, languages, music, tutoring), but there is no simple way to find who has what. WhatsApp groups get buried, word of mouth only reaches your own circle, and paid tutoring is not built for free, mutual exchange. Skill-Swap gives students one place to list, search and match skills.
-
----
-
-## What is in Assignment 2
-
-This stage is the **look of the app only**. All data is dummy data and there is no navigation, database or API yet.
-
-### Screens
-
-| Screen | Purpose |
-|---|---|
-| Splash | Logo, app name and tagline |
-| Login | Email and password fields with a Login button (look only) |
-| Home | Banner and a list of suggested student matches |
-| Student Detail | One student's profile: skills they teach and want, rating, action buttons |
-| Add Skill (Profile Setup) | Form to enter name, department, skill to teach, skill to learn |
-
-### Main entity: `Student`
-
-| Field | Example |
-|---|---|
-| name | Ayesha Khan |
-| department | BS Computer Science, Year 2 |
-| teaches | Flutter |
-| wants | Graphic Design |
-| rating | 4.8 |
-| image | assets/images/student1.png |
-
-### Reusable widget
-
-`StudentCard` takes a `Student` and shows an avatar, name, department, skills and rating. It is used 4 times on the Home screen with different dummy data.
-
----
+**Navigation-only (8)** - UI matches the design and the screens link together, with no saved data:
+Splash, Matching ("It's a Match!"), Chat, Send Swap Request, Schedule, Messages, Rating, and the Navigation Drawer.
 
 ## Project structure
 
 ```
 lib/
-├── main.dart                      # starts the app, sets the theme
-├── models/
-│   └── student.dart               # Student class (the main entity)
-├── widgets/
-│   └── student_card.dart          # reusable card for one student
-└── screens/
-    ├── splash_screen.dart
-    ├── login_screen.dart
-    ├── home_screen.dart
-    ├── student_detail_screen.dart
-    └── add_skill_screen.dart
-assets/
-└── images/                        # logo, banner, 4 student avatars
+  main.dart                 app, theme, named routes, global background
+  theme/colors.dart         colours, gradients, glass card decoration
+  models/
+    student.dart            Student model (Set, Map, Record helpers)
+    user_session.dart       the currently logged-in user
+    chat_message.dart       message and conversation models
+  widgets/
+    user_avatar.dart        avatar with first-letter fallback
+    student_card.dart       reusable student card
+    app_drawer.dart         side drawer
+  screens/                  one file per screen
+assets/images/              logo, backgrounds, illustrations, student photos
 ```
 
-Every screen is its own `StatelessWidget`. To see a different screen, change the `home:` line in `lib/main.dart`.
+## Key behaviour
 
----
+- **Logged-in user:** `UserSession.currentUser` is set at login and used by the greeting, avatar, drawer, profile, match and rating screens. Nothing is hard-coded to one name.
+- **Avatar fallback:** a student without a photo shows the first letter of their name.
+- **Greeting:** "Good morning / afternoon / evening, <first name>" from `DateTime.now().hour`.
+- **Routes:** `/`, `/login`, `/home`, `/search`, `/student-detail`, `/my-profile`, `/match`, `/chat`, `/request`, `/schedule`, `/messages`, `/rating`, `/edit-profile`.
 
-## How to run
+## Course topics used
 
-You need [Flutter](https://docs.flutter.dev/get-started/install) installed.
+MaterialApp, StatelessWidget / StatefulWidget, setState, Row, Column, SizedBox, Container, buttons, icons, GestureDetector, ListView.builder, TextField, Navigator, ListTile, CircleAvatar, Card, Sets, Maps, Records, functions, conditional operators. No state-management or other external packages.
+
+## Run it
 
 ```bash
-git clone <repo-url>
-cd Skill-Swap
 flutter pub get
-flutter run -d chrome
+flutter run -d chrome --web-port=5000   # browser
 ```
 
-You can also run it on an Android emulator or a connected phone: use `flutter devices` to see the options, then `flutter run -d <device-id>`.
+**On an Android phone:** enable USB debugging, connect by cable, tap "Allow", then double-click `run_mobile.bat` (debug mode: `r` hot reload, `R` hot restart, `q` quit).
 
-To change the screen shown, open `lib/main.dart` and edit:
+After adding new files to `assets/`, stop and run the app again; hot restart does not pick up new assets.
 
-```dart
-home: const HomeScreen(),   // try SplashScreen(), LoginScreen(), etc.
-```
+## Notes
 
----
-
-## Screenshots
-
-| Splash | Login | Home |
-|---|---|---|
-| ![Splash](screenshots/splash.png) | ![Login](screenshots/login.png) | ![Home](screenshots/home.png) |
-
-| Student Detail | Add Skill |
-|---|---|
-| ![Detail](screenshots/detail.png) | ![Add Skill](screenshots/add_skill.png) |
-
----
-
-## Roadmap
-
-| Assignment | What gets added |
-|---|---|
-| **A2 (this stage)** | Static UI for all main screens |
-| **A3** | Navigation between screens and interactive widgets |
-| **A4** | Saved data (Firebase Authentication and Cloud Firestore) and a device or API feature |
-
-Planned features from the proposal: sign up and login, profile with teach and want lists, search and category filters, mutual matching, swap requests (send, accept, decline), session scheduling, and post-swap ratings.
-
----
-
-## Built with
-
-- Flutter and Dart
-- Material widgets only at this stage (`Scaffold`, `AppBar`, `Row`, `Column`, `Expanded`, `Card`, `ListTile`, `Image.asset`, `TextField`, `ElevatedButton`)
-- Planned for later: Firebase Authentication, Cloud Firestore, Provider or Riverpod
+- Images other than the student photos were AI-generated. Replace the files in `assets/images/` (keeping the names) to use the original Figma artwork.
+- The 8 navigation-only screens use sample data and do not save anything.
